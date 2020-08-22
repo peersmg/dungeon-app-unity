@@ -1,12 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MeshGenerator : MonoBehaviour
 {
     public Material material;
-    // Start is called before the first frame update
+
     void Start()
+    {
+        int[][] map = new int[5][];
+        map[0] = new int[] { 1, 1, 1, 1, 1 };
+        map[1] = new int[] { 1, 0, 0, 0, 1 };
+        map[2] = new int[] { 1, 0, 0, 0, 1 };
+        map[3] = new int[] { 1, 0, 0, 0, 1 };
+        map[4] = new int[] { 1, 1, 1, 1, 1 };
+
+        Mesh mesh = generateMesh(map);
+
+        GameObject gameObject = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
+
+        gameObject.GetComponent<MeshFilter>().mesh = mesh;
+        gameObject.GetComponent<MeshRenderer>().material = material;
+    }
+
+    Mesh generateMesh(int[][] map)
     {
         Vector3[] vertices = new Vector3[4];
         Vector2[] uv = new Vector2[4];
@@ -35,15 +50,6 @@ public class MeshGenerator : MonoBehaviour
         mesh.uv = uv;
         mesh.triangles = triangles;
 
-        GameObject gameObject = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-
-        gameObject.GetComponent<MeshFilter>().mesh = mesh;
-        gameObject.GetComponent<MeshRenderer>().material = material;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        return mesh;
     }
 }
