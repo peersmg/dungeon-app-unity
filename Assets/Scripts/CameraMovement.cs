@@ -14,8 +14,23 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        yPos += Time.deltaTime * 3;
+        float movementSpeed = Time.deltaTime * 20;
 
-        transform.position = new Vector3(transform.position.x, Mathf.Cos(yPos) * 5, transform.position.z);
+        if (Input.GetKey("w"))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + movementSpeed, transform.position.z);
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - movementSpeed, transform.position.z);
+        }
+        if (Input.GetKey("a"))
+        {
+            transform.position = new Vector3(transform.position.x - movementSpeed, transform.position.y, transform.position.z);
+        }
+        if (Input.GetKey("d"))
+        {
+            transform.position = new Vector3(transform.position.x + movementSpeed, transform.position.y, transform.position.z);
+        }
     }
 }
