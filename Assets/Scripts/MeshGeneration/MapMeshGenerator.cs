@@ -13,7 +13,12 @@ struct VertexPackage
 
 public class MapMeshGenerator
 {
-    readonly int[, ] map = new int[, ] { { 1, 1, 1, 1, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
+    readonly int[, ] map;
+
+    public MapMeshGenerator(int[, ] map)
+    {
+        this.map = map;
+    }
     public Mesh Generate()
     {
         return generateMeshMap();
