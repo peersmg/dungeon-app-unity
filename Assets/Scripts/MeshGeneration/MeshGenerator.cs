@@ -20,7 +20,7 @@ public class MeshGenerator : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material = material;
     }
 
-    Mesh generateMeshMap(int[][] map, int mapWidth, int mapHeight)
+    private Mesh generateMeshMap(int[][] map, int mapWidth, int mapHeight)
     {
         int[, ] vertexMap = buildVertexMap(map, mapWidth, mapHeight);
 
@@ -90,7 +90,7 @@ public class MeshGenerator : MonoBehaviour
         return vertexMap;
     }
 
-    void printArray(int[, ] arr)
+    private void printArray(int[, ] arr)
     {
         var rowCount = arr.GetLength(0);
         var colCount = arr.GetLength(1);
@@ -100,7 +100,7 @@ public class MeshGenerator : MonoBehaviour
         }
     }
 
-    Mesh generateBasicMesh()
+    private Mesh generateBasicMesh()
     {
         Vector3[] vertices = new Vector3[4];
         Vector2[] uv = new Vector2[4];
